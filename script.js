@@ -9,7 +9,8 @@ const pipes = new Pipes(document.getElementById("pipes"));
 const pipes2 = new Pipes2(document.getElementById("pipes2"));
 const gameStart = document.querySelector(".Game-name");
 const gameOver = document.querySelector(".game-over");
-const gameAudio = document.querySelector("#game-audio");
+const flapAudio = document.querySelector("#flap-audio");
+const dieAudio = document.querySelector("#die-audio");
 const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
@@ -21,7 +22,10 @@ let lastRenderTime;
 function update(time) {
   if (!state) {
     console.log("Game Over");
-    gameOver.classList.remove("display-none");
+    diesound();
+    setTimeout(() => {
+      gameOver.classList.remove("display-none");
+    }, 500);
     return;
   }
   if (lastRenderTime == null) {
@@ -52,15 +56,18 @@ function update(time) {
 }
 
 async function flapsound() {
-  await gameAudio.play();
+  await flapAudio.play();
+}
+async function diesound() {
+  await dieAudio.play();
 }
 
 document.addEventListener("touchstart", () => {
   if (!state) {
     return;
   }
-  flapsound();
   bird.flap();
+  flapsound();
 });
 document.addEventListener("keydown", (e) => {
   if (!state) {
