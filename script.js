@@ -14,7 +14,12 @@ const pipeDownOne = document.querySelector(".pipe-down-one");
 let pause = true;
 let state = true;
 let lastRenderTime;
+
 function update(time) {
+  if (!state) {
+    console.log("Game Over");
+    return;
+  }
   if (lastRenderTime == null) {
     lastRenderTime = time;
     window.requestAnimationFrame(update);
@@ -43,9 +48,15 @@ function update(time) {
 }
 
 document.addEventListener("touchstart", () => {
+  if (!state) {
+    return;
+  }
   bird.flap();
 });
 document.addEventListener("keydown", (e) => {
+  if (!state) {
+    return;
+  }
   if (e.code === "Space") bird.flap();
   return;
 });
