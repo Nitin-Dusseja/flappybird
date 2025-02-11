@@ -66,7 +66,7 @@ document.addEventListener("keydown", (e) => {
   if (!state) {
     return;
   }
-  gameAudio.play();
+  flapsound();
   if (e.code === "Space") bird.flap();
   return;
 });
