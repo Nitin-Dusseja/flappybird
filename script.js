@@ -51,11 +51,15 @@ function update(time) {
   window.requestAnimationFrame(update);
 }
 
+async function flapsound() {
+  await gameAudio.play();
+}
+
 document.addEventListener("touchstart", () => {
   if (!state) {
     return;
   }
-  gameAudio.play();
+  flapsound();
   bird.flap();
 });
 document.addEventListener("keydown", (e) => {
