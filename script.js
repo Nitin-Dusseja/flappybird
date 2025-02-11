@@ -9,6 +9,7 @@ const pipes = new Pipes(document.getElementById("pipes"));
 const pipes2 = new Pipes2(document.getElementById("pipes2"));
 const gameStart = document.querySelector(".Game-name");
 const gameOver = document.querySelector(".game-over");
+const gameAudio = document.querySelector("#game-audio");
 const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
@@ -54,12 +55,14 @@ document.addEventListener("touchstart", () => {
   if (!state) {
     return;
   }
+  gameAudio.play();
   bird.flap();
 });
 document.addEventListener("keydown", (e) => {
   if (!state) {
     return;
   }
+  gameAudio.play();
   if (e.code === "Space") bird.flap();
   return;
 });
