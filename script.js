@@ -8,6 +8,8 @@ const bird = new Bird(document.getElementById("bird"));
 const pipes = new Pipes(document.getElementById("pipes"));
 const pipes2 = new Pipes2(document.getElementById("pipes2"));
 const gameStart = document.querySelector(".Game-name");
+const gameOver = document.querySelector(".game-over");
+const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
 
@@ -18,6 +20,7 @@ let lastRenderTime;
 function update(time) {
   if (!state) {
     console.log("Game Over");
+    gameOver.classList.remove("display-none");
     return;
   }
   if (lastRenderTime == null) {
@@ -61,4 +64,7 @@ document.addEventListener("keydown", (e) => {
   return;
 });
 
+restartBtn.addEventListener("click", () => {
+  location.reload();
+});
 window.requestAnimationFrame(update);
