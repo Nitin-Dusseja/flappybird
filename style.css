@@ -211,7 +211,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 4rem 3rem; */
   font-size: 10rem;
   color: black;
   font-weight: 300;
@@ -225,6 +224,7 @@ body{
 
 .display-none{
   display: none;
+  visibility: hidden;
 }
 
 .Game-name h1{

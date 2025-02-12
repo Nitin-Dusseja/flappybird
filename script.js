@@ -14,6 +14,9 @@ const dieAudio = document.querySelector("#die-audio");
 const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
+const pipeUptwo = document.querySelector(".pipe-up-two");
+const pipeDowntwo = document.querySelector(".pipe-down-two");
+const birdElem = document.querySelector("#bird");
 
 let pause = true;
 let state = true;
@@ -50,9 +53,33 @@ function update(time) {
     if (!state) pause = true;
     pipes.update(delta, pipeUpOne, pipeDownOne);
     pipes2.update(delta);
+
+    if (collisiondetection(pipeUpOne, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(pipeDownOne, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(pipeUptwo, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(pipeDowntwo, birdElem)) {
+      state = false;
+    }
   }
   lastRenderTime = time;
   window.requestAnimationFrame(update);
+}
+
+function collisiondetection(pipeUpElem, birdElem) {
+  let pipeUp = pipeUpElem.getBoundingClientRect();
+  let bird = birdElem.getBoundingClientRect();
+  return !(
+    pipeUp.top + pipeUp.height < bird.top ||
+    pipeUp.top > bird.top + bird.height ||
+    pipeUp.left + pipeUp.width < bird.left ||
+    pipeUp.left > bird.left + bird.width
+  );
 }
 
 async function flapsound() {

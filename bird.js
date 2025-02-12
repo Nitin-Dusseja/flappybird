@@ -21,6 +21,5 @@ export default class Bird {
   flap() {
     if (this.y <= 0) return;
     this.y -= 5.0;
-    // console.log(this.y, "touched");
   }
 }
