@@ -14,7 +14,8 @@ export default class Bird {
     if (this.y >= 79) {
       return false;
     }
-    this.y += delta * 0.02;
+    // before falling speed is 0.02
+    this.y += delta * 0.021;
     return true;
   }
 

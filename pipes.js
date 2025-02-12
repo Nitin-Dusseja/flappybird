@@ -21,6 +21,8 @@ export default class pipes {
       pipeDown.style.height = `${downHeight}vh`;
       return;
     }
-    this.x -= delta * 0.035;
+    // before falling speed is 0.035
+
+    this.x -= delta * 0.04;
   }
 }

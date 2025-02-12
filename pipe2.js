@@ -17,6 +17,7 @@ export default class pipes2 {
       this.x = 100;
       return;
     }
-    this.x -= delta * 0.035;
+    // before falling speed is 0.035
+    this.x -= delta * 0.04;
   }
 }
