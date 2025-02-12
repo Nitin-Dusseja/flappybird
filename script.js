@@ -18,6 +18,8 @@ const pipeUptwo = document.querySelector(".pipe-up-two");
 const pipeDowntwo = document.querySelector(".pipe-down-two");
 const birdElem = document.querySelector("#bird");
 
+let speed = 0.0001;
+
 let pause = true;
 let state = true;
 let lastRenderTime;
@@ -51,9 +53,9 @@ function update(time) {
   } else {
     state = bird.update(delta);
     if (!state) pause = true;
-    pipes.update(delta, pipeUpOne, pipeDownOne);
-    pipes2.update(delta);
-
+    pipes.update(delta, pipeUpOne, pipeDownOne, speed);
+    pipes2.update(delta, speed);
+    speed += 0.0001;
     if (collisiondetection(pipeUpOne, birdElem)) {
       state = false;
     }

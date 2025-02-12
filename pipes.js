@@ -10,7 +10,7 @@ export default class pipes {
     return parseInt(this.PipesElem.style.setProperty("--x", value));
   }
 
-  update(delta, pipeUp, pipeDown) {
+  update(delta, pipeUp, pipeDown, speed) {
     if (this.x <= -25) {
       this.x = 100;
       let random = Math.floor(Math.random() * 50) + 10;
@@ -21,8 +21,7 @@ export default class pipes {
       pipeDown.style.height = `${downHeight}vh`;
       return;
     }
-    // before falling speed is 0.035
-
-    this.x -= delta * 0.04;
+    // before pipes speed is 0.035
+    this.x -= delta * 0.04 + speed;
   }
 }
