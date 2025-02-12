@@ -36,9 +36,11 @@ function update(time) {
       gameOver.classList.remove("display-none");
       endScore.innerHTML = score;
     }, 500);
-    document.addEventListener("keydown", () => {
-      location.reload();
-    });
+    setTimeout(() => {
+      document.addEventListener("keydown", () => {
+        location.reload();
+      });
+    }, 1000);
     return;
   }
   if (lastRenderTime == null) {
