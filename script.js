@@ -19,8 +19,9 @@ const pipeDowntwo = document.querySelector(".pipe-down-two");
 const birdElem = document.querySelector("#bird");
 const printScore = document.querySelector(".print-score");
 const Score = document.querySelector(".score");
+const endScore = document.querySelector(".end-score");
 
-let speed = 0.0001;
+let speed = 0.00001;
 let score = 0;
 let pipePassed = false;
 let pause = true;
@@ -33,6 +34,7 @@ function update(time) {
     diesound();
     setTimeout(() => {
       gameOver.classList.remove("display-none");
+      endScore.innerHTML = score;
     }, 500);
     return;
   }
@@ -69,10 +71,9 @@ function update(time) {
     if (pipePassed) {
       pipePassed = false;
       score++;
-      console.log(score);
       printScore.innerHTML = parseInt(score);
     }
-    speed += 0.0001;
+    speed += 0.00001;
     if (collisiondetection(pipeUpOne, birdElem)) {
       state = false;
     }
