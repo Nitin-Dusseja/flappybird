@@ -240,6 +240,15 @@ body{
   color: black;
 }
 
+.score{
+  font-size: 1.5rem;
+  color: white;
+  right: 1rem;
+  position: absolute;
+  z-index: 99;
+  font-family: "Roboto", serif;
+}
+
 .bn16 {
   margin-top: 2rem;
   font-family: "myFont", serif;

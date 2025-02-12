@@ -14,12 +14,12 @@ export default class pipes {
     if (this.x <= -25) {
       this.x = 100;
       let random = Math.floor(Math.random() * 50) + 10;
-      console.log(random);
+      // console.log(random);
       let upHeight = random;
       let downHeight = 80 - random;
       pipeUp.style.height = `${upHeight}vh`;
       pipeDown.style.height = `${downHeight}vh`;
-      return;
+      return true;
     }
     // before pipes speed is 0.035
     this.x -= delta * 0.04 + speed;

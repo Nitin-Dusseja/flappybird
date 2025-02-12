@@ -15,7 +15,7 @@ export default class pipes2 {
   update(delta, speed) {
     if (this.x <= -25) {
       this.x = 100;
-      return;
+      return true;
     }
     // before pipes speed is 0.035
     this.x -= delta * 0.04 + speed;

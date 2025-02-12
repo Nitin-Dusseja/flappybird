@@ -17,9 +17,12 @@ const pipeDownOne = document.querySelector(".pipe-down-one");
 const pipeUptwo = document.querySelector(".pipe-up-two");
 const pipeDowntwo = document.querySelector(".pipe-down-two");
 const birdElem = document.querySelector("#bird");
+const printScore = document.querySelector(".print-score");
+const Score = document.querySelector(".score");
 
 let speed = 0.0001;
-
+let score = 0;
+let pipePassed = false;
 let pause = true;
 let state = true;
 let lastRenderTime;
@@ -44,17 +47,31 @@ function update(time) {
     document.addEventListener("touchstart", () => {
       pause = false;
       gameStart.classList.add("display-none");
+      Score.classList.remove("display-none");
     });
     document.addEventListener("keydown", (e) => {
       if (e.code === "Space") pause = false;
       gameStart.classList.add("display-none");
+      Score.classList.remove("display-none");
       return;
     });
   } else {
-    state = bird.update(delta);
+    state = bird.update(delta, speed);
     if (!state) pause = true;
-    pipes.update(delta, pipeUpOne, pipeDownOne, speed);
-    pipes2.update(delta, speed);
+    pipePassed = pipes.update(delta, pipeUpOne, pipeDownOne, speed);
+    if (pipePassed) {
+      pipePassed = false;
+      score++;
+      console.log(score);
+      printScore.innerHTML = parseInt(score);
+    }
+    pipePassed = pipes2.update(delta, speed);
+    if (pipePassed) {
+      pipePassed = false;
+      score++;
+      console.log(score);
+      printScore.innerHTML = parseInt(score);
+    }
     speed += 0.0001;
     if (collisiondetection(pipeUpOne, birdElem)) {
       state = false;

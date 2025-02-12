@@ -10,12 +10,12 @@ export default class Bird {
     return parseInt(this.birdElem.style.setProperty("--y", value));
   }
 
-  update(delta) {
+  update(delta, speed) {
     if (this.y >= 79) {
       return false;
     }
     // before falling speed is 0.02
-    this.y += delta * 0.021;
+    this.y += delta * 0.021 + speed;
     return true;
   }
 
