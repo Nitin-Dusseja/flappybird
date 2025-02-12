@@ -96,7 +96,7 @@ body{
   width: 15px;
   position: absolute;
   border-radius: 10px;
-  background-image: linear-gradient(orange,darkorange);
+  background-image: linear-gradient(#ffa500,darkorange);
 }
 
 .beak.down{
@@ -120,7 +120,7 @@ body{
   position: absolute;
   height: calc(.5rem + 1vmin);
   width: calc(1.2rem + 1vmin);
-  background-image: linear-gradient(yellow,orange);
+  background-image: linear-gradient(#ffff00,orange);
   border-radius: 50%;
   border: 1px solid black;
   top: 40%;
