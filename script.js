@@ -11,6 +11,7 @@ const gameStart = document.querySelector(".Game-name");
 const gameOver = document.querySelector(".game-over");
 const flapAudio = document.querySelector("#flap-audio");
 const dieAudio = document.querySelector("#die-audio");
+const coinAudio = document.querySelector("#coin-audio");
 const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
@@ -69,13 +70,14 @@ function update(time) {
     if (pipePassed) {
       pipePassed = false;
       score++;
-      console.log(score);
+      coinsound();
       printScore.innerHTML = parseInt(score);
     }
     pipePassed = pipes2.update(delta, speed);
     if (pipePassed) {
       pipePassed = false;
       score++;
+      coinsound();
       printScore.innerHTML = parseInt(score);
     }
     speed += 0.00001;
@@ -112,6 +114,9 @@ async function flapsound() {
 }
 async function diesound() {
   await dieAudio.play();
+}
+function coinsound() {
+  coinAudio.play();
 }
 
 document.addEventListener("touchstart", () => {

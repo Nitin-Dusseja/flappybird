@@ -16,19 +16,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="./script.js"></script>
 </head>
 
 <body>
   <div class="display">
     <div class="score display-none">
-      <span>score : </span><span class="print-score"></span>
+      <span>Score : </span><span class="print-score"></span>
     </div>
     <audio id="flap-audio">
       <source src="./audio/Squish2.wav" type="audio/wav">
     </audio>
     <audio id="die-audio">
       <source src="./audio/Die.wav" type="audio/wav">
+    </audio>
+    <audio id="coin-audio">
+      <source src="./audio/Coin.wav" type="audio/wav">
     </audio>
     <div id="bird">
       <span class="parts eyes front"><span class="eyeball"></span></span>
@@ -56,6 +58,7 @@
       <div class="ground-grass"></div>
     </div>
   </div>
+  <script defer type="module" src="./script.js"></script>
 </body>
 
 </html>
