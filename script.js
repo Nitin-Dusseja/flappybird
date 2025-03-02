@@ -15,18 +15,25 @@ const coinAudio = document.querySelector("#coin-audio");
 const restartBtn = document.querySelector(".restart-btn");
 const pipeUpOne = document.querySelector(".pipe-up-one");
 const pipeDownOne = document.querySelector(".pipe-down-one");
+const upheadone = document.querySelector(".uphead-one");
+const downheadone = document.querySelector(".downhead-one");
+const upheadtwo = document.querySelector(".uphead-two");
+const downheadtwo = document.querySelector(".downhead-two");
 const pipeUptwo = document.querySelector(".pipe-up-two");
 const pipeDowntwo = document.querySelector(".pipe-down-two");
 const birdElem = document.querySelector("#bird");
 const printScore = document.querySelector(".print-score");
 const Score = document.querySelector(".score");
 const endScore = document.querySelector(".end-score");
+const bush = document.querySelector(".bush");
+const bushone = document.querySelector(".bush-one");
 
 let speed = 0.00001;
 let score = 0;
 let pipePassed = false;
 let pause = true;
 let state = true;
+let bushMove = 0;
 let lastRenderTime;
 
 function update(time) {
@@ -65,6 +72,12 @@ function update(time) {
     });
   } else {
     state = bird.update(delta, speed);
+    bushMove++;
+    if (bushMove >= 1200) {
+      bushMove = 0;
+    }
+    bushone.style.left = `-${bushMove / 0.4}px`;
+    bush.style.left = `-${bushMove}px`;
     if (!state) pause = true;
     pipePassed = pipes.update(delta, pipeUpOne, pipeDownOne, speed);
     if (pipePassed) {
@@ -81,6 +94,18 @@ function update(time) {
       printScore.innerHTML = parseInt(score);
     }
     speed += 0.00001;
+    if (collisiondetection(upheadone, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(downheadone, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(upheadtwo, birdElem)) {
+      state = false;
+    }
+    if (collisiondetection(downheadtwo, birdElem)) {
+      state = false;
+    }
     if (collisiondetection(pipeUpOne, birdElem)) {
       state = false;
     }
